@@ -49,6 +49,11 @@ class _AuthScreenState extends State<AuthScreen> {
               height: 10.0,
             ),
             RaisedButton(
+              color: Colors.blueAccent,
+              child: const Text(
+                "Authenticate",
+                style: TextStyle(color: Colors.white),
+              ),
               onPressed: () {
                 // call authenticate endpoint
                 AuthService().auth(username, ID, password).then(
@@ -67,8 +72,6 @@ class _AuthScreenState extends State<AuthScreen> {
                   },
                 );
               },
-              child: Text("Authenticate"),
-              color: Colors.blueAccent,
             ),
             RaisedButton(
               color: Colors.greenAccent,
@@ -95,11 +98,11 @@ class _AuthScreenState extends State<AuthScreen> {
               },
             ),
             RaisedButton(
-              color: Colors.greenAccent,
+              color: Colors.yellowAccent,
               child: const Text(
                 "Get User Info",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               onPressed: () {
