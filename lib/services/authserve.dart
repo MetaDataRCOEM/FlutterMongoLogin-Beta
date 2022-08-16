@@ -39,6 +39,31 @@ class AuthService {
         },
         options: Options(contentType: Headers.formUrlEncodedContentType),
       );
-    } on DioError catch (e) {}
+    } on DioError catch (e) {
+      Fluttertoast.showToast(
+        msg: e.response?.data['msg'],
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
+  getInfo(token) async {
+    try {
+      dio.options.headers['authorization'] = "Bearer $token";
+      return await dio.get("https://sihbackendflutter.herokuapp.com/getinfo");
+    } on DioError catch (e) {
+      Fluttertoast.showToast(
+        msg: e.response?.data['msg'],
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
   }
 }

@@ -69,6 +69,54 @@ class _AuthScreenState extends State<AuthScreen> {
               },
               child: Text("Authenticate"),
               color: Colors.blueAccent,
+            ),
+            RaisedButton(
+              color: Colors.greenAccent,
+              child: const Text(
+                "Add User",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                // call authenticate endpoint
+                AuthService().addUser(username, ID, password).then(
+                  (value) {
+                    Fluttertoast.showToast(
+                      msg: value.data['msg'],
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.green,
+                      textColor: Colors.white,
+                      fontSize: 16.0,
+                    );
+                  },
+                );
+              },
+            ),
+            RaisedButton(
+              color: Colors.greenAccent,
+              child: const Text(
+                "Get User Info",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                // call authenticate endpoint
+                AuthService().getInfo(token).then(
+                  (value) {
+                    Fluttertoast.showToast(
+                      msg: value.data['msg'],
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.yellowAccent,
+                      textColor: Colors.black,
+                      fontSize: 16.0,
+                    );
+                  },
+                );
+              },
             )
           ],
         ),
